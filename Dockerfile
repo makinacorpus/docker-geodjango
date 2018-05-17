@@ -6,7 +6,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update && apt-get install -y \
     # std libs
-    unzip wget sudo less nano curl git build-essential software-properties-common \
+    unzip wget sudo less nano curl git gosu build-essential software-properties-common \
     # languages
     language-pack-en-base locales \
     # python and requirements libs
