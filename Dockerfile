@@ -7,7 +7,7 @@ ENV LANG C.UTF-8
 
 RUN apt-get update -qq && apt-get install -y -qq \
     # std libs
-    unzip wget sudo less nano curl git gosu build-essential software-properties-common \
+    wget build-essential\
     # python basic libs
     python3.7 python3.7-dev gettext \
     # geodjango
