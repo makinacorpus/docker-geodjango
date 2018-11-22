@@ -16,7 +16,7 @@ RUN apt-get update && apt-get install -y \
     libproj-dev \
     postgresql-client \
     wget \
-    && rm -rf /var/lib/apt/lists/* && /var/cache/apt/*
+    && rm -rf /var/lib/apt/lists/* && rm -rf /var/cache/apt/*
 
 RUN wget https://bootstrap.pypa.io/get-pip.py && python get-pip.py && rm get-pip.py
 
