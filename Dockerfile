@@ -7,6 +7,8 @@ ENV LANG C.UTF-8
 
 RUN apt-get update -qq && apt-get install -y -qq \
     # std libs
+    git less nano curl \
+    ca-certificates \
     wget build-essential\
     # python basic libs
     python3.7 python3.7-dev gettext \
