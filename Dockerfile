@@ -4,7 +4,9 @@ MAINTAINER Makina Corpus "contact@makina-corpus.com"
 ENV PYTHONUNBUFFERED 1
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-get update && apt-get install -y \
+RUN apt-get update -qq && apt-get install -y -qq \
+    git less nano curl \
+    ca-certificates \
     binutils \
     build-essential \
     gettext \
