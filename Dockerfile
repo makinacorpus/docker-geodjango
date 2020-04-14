@@ -1,4 +1,4 @@
-FROM ubuntu:bionic
+FROM ubuntu:focal
 MAINTAINER Makina Corpus "contact@makina-corpus.com"
 
 ENV PYTHONUNBUFFERED 1
@@ -11,7 +11,7 @@ RUN apt-get update -qq && apt-get install -y -qq \
     ca-certificates \
     wget build-essential\
     # python basic libs
-    python3.8 python3.8-dev python3.8-venv gettext \
+    python3.8 python3.8-dev python3.8-venv python3.8-distutils gettext \
     # geodjango
     gdal-bin binutils libproj-dev libgdal-dev \
     # postgresql
