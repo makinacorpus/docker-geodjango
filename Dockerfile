@@ -1,5 +1,5 @@
 FROM ubuntu:focal
-MAINTAINER Makina Corpus "contact@makina-corpus.com"
+LABEL Author="Makina Corpus contact@makina-corpus.com"
 
 ENV PYTHONUNBUFFERED 1
 ENV DEBIAN_FRONTEND noninteractive
