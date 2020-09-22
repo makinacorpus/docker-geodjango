@@ -5,7 +5,7 @@ ENV PYTHONUNBUFFERED 1
 ENV DEBIAN_FRONTEND noninteractive
 ENV LANG C.UTF-8
 
-RUN apt-get update -qq && apt-get install -y -qq \
+RUN apt-get update -qq && apt-get -y upgrade && apt-get install -y -qq \
     # std libs
     git less nano curl \
     ca-certificates \
