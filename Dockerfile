@@ -5,7 +5,13 @@ ENV PYTHONUNBUFFERED 1
 ENV DEBIAN_FRONTEND noninteractive
 ENV LANG C.UTF-8
 
-RUN apt-get update -qq && apt-get install -y -qq \
+RUN apt-get update -qq && apt-get upgrade -y -qq && apt-get install -y -qq \
+    # std libs
+    software-properties-common && \
+    apt-get clean all && rm -rf /var/apt/lists/* && rm -rf /var/cache/apt/*
+
+RUN add-apt-repository ppa:deadsnakes/ppa && \
+    apt-get update -qq && apt-get install -y -qq \
     # std libs
     git less nano curl \
     ca-certificates \
