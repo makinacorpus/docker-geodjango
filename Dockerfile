@@ -7,9 +7,8 @@ ENV LANG C.UTF-8
 RUN apt-get update -qq && \
     env DEBIAN_FRONTEND=noninteractive apt-get install -yqq software-properties-common wget && \
     printf "deb [arch=amd64] https://packages.geotrek.fr/ubuntu focal main" > /etc/apt/sources.list.d/geotrek.list && \
-    wget -O- "https://packages.geotrek.fr/geotrek.gpg.key" | apt-key add -
-
-RUN apt-get update -qq && apt-get -y upgrade && apt-get install -y -qq \
+    wget -O- "https://packages.geotrek.fr/geotrek.gpg.key" | apt-key add - && \
+    apt-get update -qq && apt-get -y upgrade && apt-get install -y -qq \
     # std libs
     git less nano curl \
     ca-certificates \
