@@ -5,12 +5,12 @@ ENV PYTHONUNBUFFERED 1
 ENV DEBIAN_FRONTEND noninteractive
 ENV LANG C.UTF-8
 
-RUN apt-get update -qq && apt-get upgrade -y -qq && apt-get install -y -qq \
-    # std libs
-    software-properties-common && \
-    apt-get clean all && rm -rf /var/apt/lists/* && rm -rf /var/cache/apt/*
+COPY geotrek_bionic.list /etc/apt/sources.list.d/geotrek.list
 
-RUN add-apt-repository ppa:deadsnakes/ppa && \
+RUN apt-get update -qq && apt-get install -y -qq \
+    # std libs
+    software-properties-common wget && wget "https://packages.geotrek.fr/geotrek.gpg.key" -O ./key && \
+    apt-key add ./key && \
     apt-get update -qq && apt-get install -y -qq \
     # std libs
     git less nano curl \
@@ -25,7 +25,7 @@ RUN add-apt-repository ppa:deadsnakes/ppa && \
     apt-get clean all && rm -rf /var/apt/lists/* && rm -rf /var/cache/apt/*
 
 # install pip
-RUN wget https://bootstrap.pypa.io/get-pip.py && python3.8 get-pip.py && rm get-pip.py
-RUN pip3 install --no-cache-dir setuptools wheel -U
+RUN wget https://bootstrap.pypa.io/get-pip.py && python3.8 get-pip.py && rm get-pip.py && \
+    pip3 install --no-cache-dir setuptools wheel -U
 
 CMD ["/bin/bash"]
