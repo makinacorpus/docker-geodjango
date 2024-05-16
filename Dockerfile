@@ -5,12 +5,12 @@ ENV PYTHONUNBUFFERED 1
 ENV DEBIAN_FRONTEND noninteractive
 ENV LANG C.UTF-8
 
-COPY geotrek_bionic.list /etc/apt/sources.list.d/geotrek.list
-
 RUN apt-get update -qq && apt-get install -y -qq \
     # std libs
-    software-properties-common wget && wget "https://packages.geotrek.fr/geotrek.gpg.key" -O ./key && \
-    apt-key add ./key && \
+    software-properties-common wget
+
+COPY geotrek_bionic.list /etc/apt/sources.list.d/geotrek.list
+RUN wget "https://packages.geotrek.fr/geotrek.gpg.key" -O ./key && apt-key add ./key && \
     apt-get update -qq && apt-get install -y -qq \
     # std libs
     git less nano curl \
