@@ -1,9 +1,9 @@
-FROM ubuntu:jammy
-MAINTAINER Makina Corpus "contact@makina-corpus.com"
+FROM ubuntu:noble
+LABEL org.opencontainers.image.authors="Makina Corpus <contact@makina-corpus.com>"
 
-ENV PYTHONUNBUFFERED 1
-ENV DEBIAN_FRONTEND noninteractive
-ENV LANG C.UTF-8
+ENV PYTHONUNBUFFERED=1
+ENV DEBIAN_FRONTEND=noninteractive
+ENV LANG=C.UTF-8
 
 RUN apt-get update -qq && apt-get install -y -qq \
     # std libs
@@ -11,15 +11,11 @@ RUN apt-get update -qq && apt-get install -y -qq \
     ca-certificates \
     wget build-essential\
     # python basic libs
-    python3.10 python3.10-dev python3.10-venv gettext \
+    python3.12 python3.12-dev python3.12-venv python3-pip gettext \
     # geodjango
     gdal-bin binutils libproj-dev libgdal-dev \
     # postgresql
     libpq-dev postgresql-client && \
     apt-get clean all && rm -rf /var/apt/lists/* && rm -rf /var/cache/apt/*
-
-# install pip
-RUN wget https://bootstrap.pypa.io/get-pip.py && python3.10 get-pip.py && rm get-pip.py
-RUN pip3 install --no-cache-dir setuptools wheel -U
 
 CMD ["/bin/bash"]
