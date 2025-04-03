@@ -1,9 +1,12 @@
 FROM ubuntu:focal
-LABEL Author="Makina Corpus contact@makina-corpus.com"
+LABEL org.opencontainers.image.authors="Makina Corpus <contact@makina-corpus.com>"
 
-ENV PYTHONUNBUFFERED 1
-ENV DEBIAN_FRONTEND noninteractive
-ENV LANG C.UTF-8
+ENV PYTHONUNBUFFERED=1
+ENV DEBIAN_FRONTEND=noninteractive
+ENV LANG=C.UTF-8
+
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
+
 RUN apt-get update -qq && \
     env DEBIAN_FRONTEND=noninteractive apt-get install -yqq software-properties-common wget && \
     printf "deb [arch=amd64] https://packages.geotrek.fr/ubuntu focal main" > /etc/apt/sources.list.d/geotrek.list && \
