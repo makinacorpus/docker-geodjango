@@ -1,5 +1,5 @@
 FROM ubuntu:jammy
-MAINTAINER Makina Corpus "contact@makina-corpus.com"
+LABEL org.opencontainers.image.authors="Makina Corpus <contact@makina-corpus.com>"
 
 ENV PYTHONUNBUFFERED=1
 ENV DEBIAN_FRONTEND=noninteractive
