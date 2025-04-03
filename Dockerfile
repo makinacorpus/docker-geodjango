@@ -5,6 +5,8 @@ ENV PYTHONUNBUFFERED=1
 ENV DEBIAN_FRONTEND=noninteractive
 ENV LANG=C.UTF-8
 
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
+
 RUN apt-get update -qq && apt-get install -y -qq \
     # std libs
     git less nano curl \
