@@ -1,4 +1,4 @@
-FROM ubuntu:noble
+FROM ubuntu:resolute
 LABEL org.opencontainers.image.authors="Makina Corpus <contact@makina-corpus.com>"
 
 ENV PYTHONUNBUFFERED=1
@@ -13,7 +13,7 @@ RUN apt-get update -qq && apt-get install -y -qq \
     ca-certificates \
     wget build-essential\
     # python basic libs
-    python3.12 python3.12-dev python3.12-venv python3-pip gettext \
+    python3.13 python3.13-dev python3.13-venv python3-pip gettext \
     # geodjango
     gdal-bin binutils libproj-dev libgdal-dev \
     # postgresql
